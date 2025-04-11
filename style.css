@@ -52,4 +52,18 @@ nav a.current {
   font-weight: bold;
 }
 
+:root {
+    --color-accent: oklch(65% 50% 0); /* your chosen accent color */
+    accent-color: var(--color-accent); /* for form elements, etc. */
+ }
+  
+nav a:hover {
+    background-color: #eee;
+    border-bottom: 0.4em solid var(--color-accent);
+}
+  
+nav a {
+    border-bottom: 0.4em solid transparent; /* keeps height consistent */
+    transition: border-color 0.3s ease;
+}
   
