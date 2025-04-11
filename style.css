@@ -5,6 +5,7 @@ body {
     margin: 40px;
     padding: 20px;
     line-height: 1.6;
+    margin-inline: max(1em, (100% - 100ch) / 2);
     background-color: #f4f4f4;
 }
 .container {
