@@ -56,14 +56,40 @@ nav a.current {
     --color-accent: oklch(65% 50% 0); /* your chosen accent color */
     accent-color: var(--color-accent); /* for form elements, etc. */
  }
-  
+
 nav a:hover {
     background-color: #7625f8;
     border-bottom: 0.4em solid var(--color-accent);
 }
-  
+
 nav a {
     border-bottom: 0.4em solid transparent; /* keeps height consistent */
     transition: border-color 0.3s ease;
 }
-  
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto; /* centers the form */
+}
+
+label {
+  display: block;
+  margin-block: 1em 0.25em; /* space above and a bit below */
+}
+
+input,
+textarea,
+button {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit; /* from Step 3.1 */
+  padding: 0.5em;
+  margin-bottom: 1em;
+}
