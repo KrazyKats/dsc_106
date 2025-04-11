@@ -69,38 +69,37 @@ nav a {
 
 form {
   display: grid;
-  grid-template-columns: auto 1fr; /* Label content on left, input takes the rest */
-  gap: 1em;
-  max-width: 600px;
+  grid-template-columns: max-content 1fr; /* label takes auto width, input fills remaining */
+  gap: 1em 2em; /* row and column gap */
+  max-width: 700px;
   margin: 0 auto;
+  align-items: start;
 }
 
-/* Each label spans the full row so we can subgrid */
-label {
-  display: grid;
-  grid-template-columns: subgrid;
-  grid-column: 1 / -1; /* span both columns of the parent grid */
-  align-items: center;
-  gap: 0.5em;
+/* Align labels to the right of their cell */
+form label {
+  text-align: right;
+  align-self: center;
 }
 
-/* Span label text into column 1 and input into column 2 */
-label > span {
-  grid-column: 1;
-}
-
-label > input,
-label > textarea {
-  grid-column: 2;
+/* Ensure inputs/textareas fill the available width */
+form input,
+form textarea {
   width: 100%;
   box-sizing: border-box;
   font: inherit;
   padding: 0.5em;
 }
 
-/* Button also spans full row */
-button {
+/* Make textarea a bit taller */
+form textarea {
+  min-height: 6em;
+}
+
+/* Button spans both columns */
+form button {
   grid-column: 1 / -1;
-  padding: 0.75em;
+  justify-self: start; /* or center / end depending on preference */
+  padding: 0.75em 1.25em;
   font: inherit;
 }
