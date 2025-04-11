@@ -101,3 +101,30 @@ form button {
   padding: 0.75em 1.25em;
   font: inherit;
 }
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+  gap: 2em;
+  padding: 2em 1em;
+}
+
+.projects article {
+  border: 1px solid #ccc;
+  padding: 1em;
+  border-radius: 0.5em;
+  background: #f9f9f9;
+  transition: transform 0.2s ease;
+}
+
+.projects article:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.projects img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-top: 1em;
+}
