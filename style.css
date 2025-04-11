@@ -4,6 +4,7 @@ body {
     padding: 20px;
     line-height: 1.6;
     background-color: #f4f4f4;
+    max-width: 50ch;
 }
 .container {
     max-width: 800px;
