@@ -23,6 +23,30 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
-ul, li{
-    display: contents
+nav ul,
+nav li {
+  display: contents;
 }
+
+nav {
+    display: flex;
+    background-color: #333; /* example background */
+  }
+  
+  nav a {
+    flex: 1;
+    text-align: center;
+    padding: 1em;
+    color: white;
+    text-decoration: none;
+  }
+  
+  nav a:hover {
+    background-color: #444;
+  }
+  
+  nav a.current {
+    background-color: #555;
+    font-weight: bold;
+  }
+  
