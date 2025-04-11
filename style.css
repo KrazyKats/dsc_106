@@ -69,20 +69,19 @@ nav a {
 
 form {
   display: grid;
-  grid-template-columns: max-content 1fr; /* label takes auto width, input fills remaining */
-  gap: 1em 2em; /* row and column gap */
+  grid-template-columns: max-content 1fr;
+  gap: 1em 2em; /* row gap and column gap */
   max-width: 700px;
   margin: 0 auto;
-  align-items: start;
+  align-items: center;
 }
 
-/* Align labels to the right of their cell */
 form label {
   text-align: right;
   align-self: center;
+  white-space: nowrap; /* Prevent labels from wrapping */
 }
 
-/* Ensure inputs/textareas fill the available width */
 form input,
 form textarea {
   width: 100%;
@@ -91,15 +90,14 @@ form textarea {
   padding: 0.5em;
 }
 
-/* Make textarea a bit taller */
 form textarea {
   min-height: 6em;
+  resize: vertical;
 }
 
-/* Button spans both columns */
 form button {
   grid-column: 1 / -1;
-  justify-self: start; /* or center / end depending on preference */
+  justify-self: start;
   padding: 0.75em 1.25em;
   font: inherit;
 }
