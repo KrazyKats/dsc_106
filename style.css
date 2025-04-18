@@ -4,8 +4,8 @@ body {
     margin: 40px;
     margin-inline: max(1em, (100% - 100ch) / 2);
     line-height: 1.6;
-    background-color: #817777;
 }
+
 .container {
     max-width: 800px;
     background: white;
