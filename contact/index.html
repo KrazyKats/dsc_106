@@ -18,13 +18,16 @@
     </nav> -->
     <h1>Contact Me</h1>
     <form action="mailto:yourname@example.com" method="GET">
-        <label>Subject:</label>
-        <input name="subject" required/>
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" />
 
-        <label>Message:</label>
-        <textareas name="message" required></textarea>
+      <label for="Subject">Subject</label>
+      <input type="Subject" id="Subject" name="Subject" />
 
-        <button>Send</button>
+      <label for="message">Message</label>
+      <textarea id="message" name="message"></textarea>
+
+      <button type="submit">Send Message</button>
       </form>
       <script type="module" src="../global.js"></script>
     </body>
