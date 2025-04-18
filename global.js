@@ -24,7 +24,7 @@ function $$(selector, context = document) {
 // Base path for internal links
 const BASE_PATH = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
   ? "/"
-  : "/website/"; // Change this to match your GitHub repo name
+  : "/dsc_106/"; // Change this to match your GitHub repo name
 
 // === Step 3: Navigation ===
 let pages = [
