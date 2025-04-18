@@ -95,3 +95,24 @@ select.addEventListener("input", function (event) {
 if ("colorScheme" in localStorage) {
   setColorScheme(localStorage.colorScheme);
 }
+
+// === Step 5: Intercept form submission for proper email encoding ===
+
+const form = document.querySelector("form[action^='mailto:']");
+
+form?.addEventListener("submit", function (event) {
+  event.preventDefault(); // Stop normal form behavior
+
+  const data = new FormData(form);
+  const params = [];
+
+  for (let [name, value] of data) {
+    // Encode each name/value and add to params list
+    params.push(`${name}=${encodeURIComponent(value)}`);
+  }
+
+  const url = `${form.action}?${params.join("&")}`;
+
+  // Navigate to the mailto URL with encoded params
+  location.href = url;
+});
