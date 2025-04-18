@@ -161,24 +161,41 @@ h2, h3, h4, h5, h6 {
   text-wrap: balance;
 }
 
-.color-scheme {
+/* Step 4.1: Enable automatic dark mode */
+html {
+  color-scheme: light dark;
+  background-color: canvas;
+  color: canvastext;
+}
+
+/* Border color that adapts better */
+nav {
+  --border-color: oklch(50% 10% 200 / 40%);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Step 4.3: Position the theme switch top-right */
+label.color-scheme {
   position: absolute;
   top: 1rem;
   right: 1rem;
   font-size: 80%;
   font-family: inherit;
-  z-index: 999; /* optional: keeps it on top just in case */
 }
 
-input,
-textarea,
-button {
-  font: inherit;
+/* Make form controls match fonts */
+input, textarea, button, select {
+  font-family: inherit;
+  font-size: 1rem;
 }
 
-input,
-textarea,
-button,
-select {
-  font: inherit;
+/* Optional: adaptive hover background */
+nav a:hover {
+  background-color: color-mix(in oklch, var(--color-accent), canvas 85%);
+}
+
+/* Optional: style for current page link */
+nav a.current {
+  font-weight: bold;
+  text-decoration: underline;
 }
