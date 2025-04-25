@@ -199,3 +199,21 @@ nav a.current {
   font-weight: bold;
   text-decoration: underline;
 }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.stats-grid dt {
+  grid-row: 1;
+  font-weight: bold;
+}
+
+.stats-grid dd {
+  grid-row: 2;
+  margin: 0;
+}
+
