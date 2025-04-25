@@ -1,10 +1,10 @@
-import { fetchJSON, renderProjects } from './global.js';
+import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
 
+// Render latest projects
 const projectsContainer = document.querySelector('.projects');
-
 if (projectsContainer) {
   const projects = await fetchJSON('./lib/projects.json');
-  const latestProjects = projects.slice(0, 3); // get first 3
+  const latestProjects = projects.slice(0, 3);
   renderProjects(latestProjects, projectsContainer, 'h2');
 }
 
