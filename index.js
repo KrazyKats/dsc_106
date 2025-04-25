@@ -16,16 +16,6 @@ if (!projectsContainer) {
     renderProjects(latestProjects, projectsContainer, 'h2');
   }
 
-  import { fetchJSON, renderProjects, fetchGitHubData } from './global.js';
-
-// Render latest projects
-const projectsContainer = document.querySelector('.projects');
-if (projectsContainer) {
-  const projects = await fetchJSON('./lib/projects.json');
-  const latestProjects = projects.slice(0, 3);
-  renderProjects(latestProjects, projectsContainer, 'h2');
-}
-
 // Fetch and display GitHub stats
 const profileStats = document.querySelector('#profile-stats');
 if (profileStats) {
