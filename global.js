@@ -1,18 +1,3 @@
-// console.log('IT’S ALIVE!');
-
-// function $$(selector, context = document) {
-//   return Array.from(context.querySelectorAll(selector));
-// }
-
-// const navLinks = $$("nav a");
-
-// let currentLink = navLinks.find(
-//     (a) => a.host === location.host && a.pathname === location.pathname,
-//   );
-
-
-// currentLink?.classList.add('current');
-
 // === GLOBAL NAV + DARK MODE SWITCH ===
 
 console.log("IT'S ALIVE!");
@@ -117,10 +102,11 @@ form?.addEventListener("submit", function (event) {
   location.href = url;
 });
 
+// Step 1.2 - Fetching JSON
 export async function fetchJSON(url) {
   try {
-    // Fetch the JSON file from the given URL
     const response = await fetch(url);
+    console.log(response); // For debugging
 
     if (!response.ok) {
       throw new Error(`Failed to fetch projects: ${response.statusText}`);
@@ -131,5 +117,34 @@ export async function fetchJSON(url) {
 
   } catch (error) {
     console.error('Error fetching or parsing JSON data:', error);
+    return []; // Return empty array to prevent crashes
   }
+}
+
+// Step 1.4 - Render Projects
+export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+  if (!containerElement || !Array.isArray(projects)) return;
+
+  containerElement.innerHTML = ''; // Clear existing content
+
+  if (projects.length === 0) {
+    containerElement.innerHTML = '<p>No projects available.</p>';
+    return;
+  }
+
+  projects.forEach(project => {
+    const article = document.createElement('article');
+
+    const safeTitle = project.title || 'Untitled Project';
+    const safeImage = project.image || '';
+    const safeDescription = project.description || 'No description provided';
+
+    article.innerHTML = `
+      <${headingLevel}>${safeTitle}</${headingLevel}>
+      ${safeImage ? `<img src="${safeImage}" alt="${safeTitle}">` : ''}
+      <p>${safeDescription}</p>
+    `;
+
+    containerElement.appendChild(article);
+  });
 }
