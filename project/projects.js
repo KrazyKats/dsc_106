@@ -4,8 +4,6 @@ const projects = await fetchJSON('../lib/projects.json');
 
 const projectsContainer = document.querySelector('.projects');
 
-renderProjects(projects, projectsContainer, 'h2');
-
 export function renderProjects(project, containerElement, headingLevel = 'h2') {
     // Validate headingLevel to ensure it's a valid heading tag
     const validHeadingLevels = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
@@ -26,3 +24,5 @@ export function renderProjects(project, containerElement, headingLevel = 'h2') {
 
     containerElement.appendChild(article);
 }
+
+renderProjects(projects, projectsContainer, 'h2');
