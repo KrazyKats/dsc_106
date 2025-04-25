@@ -6,22 +6,6 @@ const projectsContainer = document.querySelector('.projects');
 
 renderProjects(projects, projectsContainer, 'h2');
 
-
-export function renderProjects(project, containerElement) {
-    // Your code will go here
-    containerElement.innerHTML = '';
-
-    const article = document.createElement('article');
-
-    article.innerHTML = `
-        <h3>${project.title}</h3>
-        <img src="${project.image}" alt="${project.title}">
-        <p>${project.description}</p>
-    `;
-
-    containerElement.appendChild(article);
-}
-
 export function renderProjects(project, containerElement, headingLevel = 'h2') {
     // Validate headingLevel to ensure it's a valid heading tag
     const validHeadingLevels = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
