@@ -19,7 +19,7 @@ if (!projectsContainer) {
 // Fetch and display GitHub stats
 const profileStats = document.querySelector('#profile-stats');
 if (profileStats) {
-  const githubData = await fetchGitHubData('your-github-username'); // Replace with your GitHub username
+  const githubData = await fetchGitHubData('krazykats'); // Replace with your GitHub username
   profileStats.innerHTML = `
     <h2>GitHub Profile Stats</h2>
     <dl class="stats-grid">
