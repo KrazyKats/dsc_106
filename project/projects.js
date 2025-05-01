@@ -13,7 +13,7 @@ if (projectsTitle && Array.isArray(projects)) {
 
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
-d3.json('../lib/project.json').then((projects) => {
+d3.json('../lib/projects.json').then((projects) => {
   // 1. Group and convert data
   let rolledData = d3.rollups(projects, v => v.length, d => d.year);
   let data = rolledData.map(([year, count]) => ({
