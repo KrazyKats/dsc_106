@@ -138,11 +138,15 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
     const safeTitle = project.title || 'Untitled Project';
     const safeImage = project.image || '';
     const safeDescription = project.description || 'No description provided';
+    const safeYear = project.year || 'Year unknown';
 
     article.innerHTML = `
       <${headingLevel}>${safeTitle}</${headingLevel}>
       ${safeImage ? `<img src="${safeImage}" alt="${safeTitle}">` : ''}
-      <p>${safeDescription}</p>
+      <div class="project-text">
+        <p>${safeDescription}</p>
+        <p class="project-year">${safeYear}</p>
+      </div>
     `;
 
     containerElement.appendChild(article);
@@ -152,35 +156,3 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
 export async function fetchGitHubData(username) {
   return fetchJSON(`https://api.github.com/users/${username}`);
 }
-
-export function renderProject(project, headingLevel = 'h3') {
-  const projectEl = document.createElement('article');
-  projectEl.classList.add('project');
-
-  const titleEl = document.createElement(headingLevel);
-  titleEl.textContent = project.title;
-
-  const imageEl = document.createElement('img');
-  imageEl.src = project.image;
-  imageEl.alt = project.title;
-
-  const descriptionContainer = document.createElement('div');
-  descriptionContainer.classList.add('project-description');
-
-  const descriptionEl = document.createElement('p');
-  descriptionEl.textContent = project.description;
-
-  const yearEl = document.createElement('p');
-  yearEl.classList.add('project-year');
-  yearEl.textContent = project.year;
-
-  descriptionContainer.appendChild(descriptionEl);
-  descriptionContainer.appendChild(yearEl);
-
-  projectEl.appendChild(titleEl);
-  projectEl.appendChild(imageEl);
-  projectEl.appendChild(descriptionContainer);
-
-  return projectEl;
-}
-
