@@ -217,3 +217,13 @@ nav a.current {
   margin: 0;
 }
 
+.centered {
+  text-align: center;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background-color: #ccc;
+  margin: 2rem 0;
+}
