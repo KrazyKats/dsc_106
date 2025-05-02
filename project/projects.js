@@ -117,11 +117,18 @@ function renderPieChart(projectsGiven) {
 renderPieChart(projects);
 
 searchInput.addEventListener('input', (event) => {
-  let query = event.target.value;
-  let filteredProjects = projects.filter((project) => {
+  query = event.target.value;
+
+  // Reset selection
+  selectedIndex = -1;
+
+  // Filter by search query
+  let filteredProjects = projects.filter(project => {
     let values = Object.values(project).join('\n').toLowerCase();
     return values.includes(query.toLowerCase());
   });
+
+  // Re-render
   renderProjects(filteredProjects, projectsContainer, 'h2');
-  renderPieChart(filteredProjects);
+  renderPieChart(filteredProjects); // Pass filteredProjects to chart
 });
