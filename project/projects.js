@@ -62,3 +62,60 @@ searchInput.addEventListener('change', (event) => {
   // render filtered projects
   renderProjects(filteredProjects, projectsContainer, 'h2');
 });
+
+function renderPieChart(projectsGiven) {
+  // Step 1: Group and convert data
+  let newRolledData = d3.rollups(
+    projectsGiven,
+    (v) => v.length,
+    (d) => d.year
+  );
+  let newData = newRolledData.map(([year, count]) => ({
+    value: count,
+    label: year
+  }));
+
+  // Step 2: Generate slices and arcs
+  let newSliceGenerator = d3.pie().value(d => d.value);
+  let newArcData = newSliceGenerator(newData);
+  let arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
+  let newArcs = newArcData.map(d => arcGenerator(d));
+
+  // Step 3: Clear old paths and legends
+  d3.select('#projects-pie-plot').selectAll('*').remove();
+  d3.select('.legend').selectAll('*').remove();
+
+  // Step 4: Draw new arcs
+  let colors = d3.scaleOrdinal(d3.schemeTableau10);
+
+  let svg = d3.select('#projects-pie-plot');
+  let group = svg.append('g')
+    .attr('transform', `translate(75, 75)`); // center the pie in a 150x150 SVG
+
+  newArcs.forEach((arc, idx) => {
+    group.append('path')
+      .attr('d', arc)
+      .attr('fill', colors(idx));
+  });
+
+  // Step 5: Create new legend
+  let legend = d3.select('.legend');
+  newData.forEach((d, idx) => {
+    legend.append('li')
+      .attr('class', 'legend-item')
+      .attr('style', `--color:${colors(idx)}`)
+      .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+  });
+}
+
+renderPieChart(projects);
+
+searchInput.addEventListener('input', (event) => {
+  let query = event.target.value;
+  let filteredProjects = projects.filter((project) => {
+    let values = Object.values(project).join('\n').toLowerCase();
+    return values.includes(query.toLowerCase());
+  });
+  renderProjects(filteredProjects, projectsContainer, 'h2');
+  renderPieChart(filteredProjects);
+});
