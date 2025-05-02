@@ -303,9 +303,7 @@ hr {
   flex-wrap: wrap;
   gap: 2em;
   align-items: flex-start;
-  justify-content: flex-start;
-  width: 100%;
-  box-sizing: border-box;
+  justify-content: center;
 }
 
 #projects-pie-plot {
