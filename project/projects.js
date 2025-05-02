@@ -62,28 +62,30 @@ function renderPieChart(projectsGiven) {
       .on('click', () => {
         selectedIndex = selectedIndex === i ? -1 : i;
 
-        // Update slices
+        // Update classes
         paths.forEach((p, idx) => {
           p.attr('class', selectedIndex === idx ? 'selected' : '');
         });
 
-        // Update legend
         legend.selectAll('li')
           .attr('class', (_, idx) => selectedIndex === idx ? 'legend-item selected' : 'legend-item');
 
-        if (selectedIndex === -1) {
-          renderProjects(projects, projectsContainer, 'h2');
-        } else {
+        // Determine project list
+        let filtered = projects;
+
+        if (selectedIndex !== -1) {
           const selectedYear = newData[selectedIndex].label;
-          const filtered = projects
-            .filter(p => p.year === selectedYear)
-            .filter(p => {
-              const values = Object.values(p).join('\n').toLowerCase();
-              return values.includes(query.toLowerCase());
-            });
-          renderProjects(filtered, projectsContainer, 'h2');
+          filtered = filtered.filter(p => p.year === selectedYear);
         }
 
+        if (query.trim() !== '') {
+          filtered = filtered.filter(p => {
+            const values = Object.values(p).join('\n').toLowerCase();
+            return values.includes(query.toLowerCase());
+          });
+        }
+
+        renderProjects(filtered, projectsContainer, 'h2');
       });
 
     paths.push(path);
