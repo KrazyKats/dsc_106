@@ -9,18 +9,21 @@
 <body>
     <h1 class="projects-title">Projects</h1>
 
+    <!-- Group chart and legend together -->
     <div class="container">
+      <div class="chart-area">
         <svg viewBox="-50 -50 100 100" id="projects-pie-plot"></svg>
         <ul class="legend" role="list"></ul>
       </div>
+    </div>
 
-      <!-- Search bar for filtering projects -->
-      <input
-        class="searchBar"
-        type="search"
-        aria-label="Search projects"
-        placeholder="🔍 Search projects…"
-      />
+    <!-- Search bar placed below chart area -->
+    <input
+      class="searchBar"
+      type="search"
+      aria-label="Search projects"
+      placeholder="🔍 Search projects…"
+    />
 
     <div class="projects"></div>
 

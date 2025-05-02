@@ -292,3 +292,50 @@ hr {
   border-color: var(--color-accent);
   box-shadow: 0 0 0 2px oklch(70% 50% 0 / 40%);
 }
+
+.container {
+  margin-top: 2em;
+  padding: 1em;
+}
+
+.chart-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+#projects-pie-plot {
+  max-width: 20em;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  flex: 0 0 auto;
+  overflow: visible;
+}
+
+.legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9em, 1fr));
+  gap: 1em;
+  list-style: none;
+  padding: 1em;
+  margin: 0;
+  border: 1px solid #ccc;
+  flex: 1;
+  align-self: stretch;
+  box-sizing: border-box;
+}
+
+.searchBar {
+  display: block;
+  margin: 2em auto;
+  width: min(100%, 30ch);
+  padding: 0.75em 1em;
+  border: 1px solid oklch(70% 5% 200 / 50%);
+  border-radius: 0.5em;
+  font: inherit;
+  background-color: canvas;
+  color: canvastext;
+}
