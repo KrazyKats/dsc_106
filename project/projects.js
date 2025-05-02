@@ -70,6 +70,15 @@ function renderPieChart(projectsGiven) {
         // Update legend
         legend.selectAll('li')
           .attr('class', (_, idx) => selectedIndex === idx ? 'legend-item selected' : 'legend-item');
+
+        if (selectedIndex === -1) {
+          renderProjects(projects, projectsContainer, 'h2');
+        } else {
+          const selectedYear = newData[selectedIndex].label;
+          const filtered = projects.filter(p => p.year === selectedYear);
+          renderProjects(filtered, projectsContainer, 'h2');
+        }
+
       });
 
     paths.push(path);
