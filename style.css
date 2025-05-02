@@ -297,11 +297,11 @@ hr {
 }
 
 .selected {
-  --color: oklch(60% 45% 0) !important; /* New color for selected wedge */
+  --color: oklch(60% 45% 0) !important;
 }
 
 .selected:is(path) {
-  fill: var(--color); /* Apply the selected color */
+  fill: var(--color);
 }
 
 path {
