@@ -55,8 +55,7 @@ function renderPieChart(projectsGiven) {
   legend.selectAll('*').remove();
 
   // Step 4: Draw new paths
-  const group = newSVG.append('g')
-    .attr('transform', 'translate(75, 75)'); // center in 150x150 SVG
+  const group = newSVG.append('g');
 
   group.selectAll('path')
     .data(newArcData)
