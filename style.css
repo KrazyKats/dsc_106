@@ -266,7 +266,7 @@ hr {
   aspect-ratio: 1 / 1;
   background-color: var(--color);
   border-radius: 0.25em;
-  display: inline-block;
+  display: flex;
 }
 
 .searchBar {
