@@ -266,7 +266,7 @@ hr {
   aspect-ratio: 1 / 1;
   background-color: var(--color);
   border-radius: 0.25em;
-  display: flex;
+  display: inline-block;
 }
 
 .searchBar {
@@ -285,4 +285,11 @@ hr {
   outline: none;
   border-color: var(--color-accent);
   box-shadow: 0 0 0 2px oklch(70% 50% 0 / 40%);
+}
+
+.chart-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  align-items: flex-start;
 }
