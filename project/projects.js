@@ -82,8 +82,3 @@ searchInput.addEventListener('input', event => {
   updateProjectsTitle(filteredProjects.length);
   renderPieChart(filteredProjects);
 });
-
-// Project Management Module
-if (projectsTitle && Array.isArray(projects)) {
-  projectsTitle.textContent = `Projects (${projects.length})`;
-}
