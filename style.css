@@ -228,6 +228,14 @@ hr {
   margin-top: 0.5rem;
 }
 
+.container {
+  display: flex;
+  align-items: flex-start;
+  gap: 2em;
+  margin-top: 2em;
+  flex-wrap: wrap;
+}
+
 #projects-pie-plot {
   max-width: 20em;
   aspect-ratio: 1 / 1;
