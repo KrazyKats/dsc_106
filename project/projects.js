@@ -56,7 +56,7 @@ function renderPieChart(projectsGiven) {
     .enter()
     .append('path')
     .attr('d', arcGenerator)
-    .style('--color', (d, i) => colors(i))
+    .attr('fill', (d, i) => colors(i))
     .attr('class', (_, i) => selectedIndex === i ? 'selected' : '')
     .style('cursor', 'pointer')
     .on('click', function(_, i) {
