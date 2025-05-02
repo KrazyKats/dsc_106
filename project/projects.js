@@ -85,3 +85,42 @@ searchInput.addEventListener('input', (event) => {
   renderProjects(filteredProjects, projectsContainer, 'h2');
   renderPieChart(filteredProjects);
 });
+
+let selectedIndex = -1; // Initialize with -1 (no selection)
+
+let svg = d3.select('#projects-pie-plot');
+svg.selectAll('path').remove(); // Clear previous paths
+
+arcs.forEach((arc, i) => {
+  svg.append('path')
+    .attr('d', arc)
+    .attr('fill', colors(i))
+    .on('click', () => {
+      // Toggle selection
+      selectedIndex = selectedIndex === i ? -1 : i;
+
+      // Apply the selected class to the clicked path
+      svg.selectAll('path')
+        .attr('class', (_, idx) => idx === selectedIndex ? 'selected' : '');
+
+      // Update legend
+      legend.selectAll('li')
+        .attr('class', (_, idx) => idx === selectedIndex ? 'selected' : '');
+
+      // Filter projects when a wedge is selected
+      filterProjectsByYear(selectedIndex);
+    });
+});
+
+function filterProjectsByYear(selectedIndex) {
+  if (selectedIndex === -1) {
+    // No selection, show all projects
+    renderProjects(projects, projectsContainer, 'h2');
+  } else {
+    // Filter projects by selected year
+    const selectedYear = arcs[selectedIndex].data.label;
+    const filteredProjects = projects.filter(project => project.year === selectedYear);
+    renderProjects(filteredProjects, projectsContainer, 'h2');
+  }
+}
+
