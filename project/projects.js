@@ -38,58 +38,65 @@ function renderPieChart(projectsGiven) {
     label: year
   }));
 
-  const newSliceGenerator = d3.pie().value(d => d.value);
-  const newArcData = newSliceGenerator(newData);
+  const pie = d3.pie().value(d => d.value);
+  const arcData = pie(newData);
   const arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
   const colors = d3.scaleOrdinal(d3.schemeTableau10);
 
-  const newSVG = d3.select('#projects-pie-plot');
-  newSVG.selectAll('*').remove();
+  const svg = d3.select('#projects-pie-plot');
+  svg.selectAll('*').remove();
+  const group = svg.append('g');
 
   const legend = d3.select('.legend');
   legend.selectAll('*').remove();
 
-  const group = newSVG.append('g');
+  // Draw wedges using forEach
+  const paths = [];
+  arcData.forEach((arc, i) => {
+    const path = group
+      .append('path')
+      .attr('d', arcGenerator(arc))
+      .style('--color', colors(i))
+      .attr('class', selectedIndex === i ? 'selected' : '')
+      .style('cursor', 'pointer')
+      .on('click', () => {
+        selectedIndex = selectedIndex === i ? -1 : i;
 
-  group.selectAll('path')
-    .data(newArcData)
-    .enter()
-    .append('path')
-    .attr('d', arcGenerator)
-    .attr('fill', (d, i) => colors(i))
-    .attr('class', (_, i) => selectedIndex === i ? 'selected' : '')
-    .style('cursor', 'pointer')
-    .on('click', function(_, i) {
-      selectedIndex = selectedIndex === i ? -1 : i;
+        // Update slices
+        paths.forEach((p, idx) => {
+          p.attr('class', selectedIndex === idx ? 'selected' : '');
+        });
 
-      // Update paths
-      newSVG.selectAll('path')
-        .attr('class', (_, idx) => selectedIndex === idx ? 'selected' : '');
+        // Update legend
+        legend.selectAll('li')
+          .attr('class', (_, idx) => selectedIndex === idx ? 'legend-item selected' : 'legend-item');
+      });
 
-      // Update legend
-      legend.selectAll('li')
-        .attr('class', (_, idx) => selectedIndex === idx ? 'legend-item selected' : 'legend-item');
-    });
+    paths.push(path);
+  });
 
-  legend.selectAll('li')
-    .data(newData)
-    .enter()
-    .append('li')
-    .attr('class', (d, i) => selectedIndex === i ? 'legend-item selected' : 'legend-item')
-    .attr('style', (d, i) => `--color:${colors(i)}`)
-    .html((d) => `<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`)
-    .on('click', function(_, i) {
-      selectedIndex = selectedIndex === i ? -1 : i;
+  // Draw legend using forEach
+  newData.forEach((d, i) => {
+    const item = legend
+      .append('li')
+      .attr('class', selectedIndex === i ? 'legend-item selected' : 'legend-item')
+      .style('--color', colors(i))
+      .html(`<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`)
+      .on('click', () => {
+        selectedIndex = selectedIndex === i ? -1 : i;
 
-      // Update paths
-      newSVG.selectAll('path')
-        .attr('class', (_, idx) => selectedIndex === idx ? 'selected' : '');
+        // Update slices
+        paths.forEach((p, idx) => {
+          p.attr('class', selectedIndex === idx ? 'selected' : '');
+        });
 
-      // Update legend
-      legend.selectAll('li')
-        .attr('class', (_, idx) => selectedIndex === idx ? 'legend-item selected' : 'legend-item');
-    });
+        // Update legend
+        legend.selectAll('li')
+          .attr('class', (_, idx) => selectedIndex === idx ? 'legend-item selected' : 'legend-item');
+      });
+  });
 }
+
 
 renderPieChart(projects);
 

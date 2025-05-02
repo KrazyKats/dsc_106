@@ -305,5 +305,6 @@ hr {
 }
 
 path {
+  fill: var(--color);
   cursor: pointer;
 }
