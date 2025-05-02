@@ -242,7 +242,6 @@ hr {
   max-width: 20em;
   aspect-ratio: 1 / 1;
   overflow: visible;
-  flex: 0 0 auto;
 }
 
 .legend {
