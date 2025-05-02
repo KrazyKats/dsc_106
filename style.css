@@ -234,7 +234,6 @@ hr {
   align-items: flex-start;
   gap: 2em;
   margin-top: 2em;
-  justify-content: center;
   flex-wrap: wrap;
 }
 
