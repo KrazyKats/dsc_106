@@ -1,7 +1,3 @@
-// Project Management Module
-if (projectsTitle && Array.isArray(projects)) {
-  projectsTitle.textContent = `Projects (${projects.length})`;
-}
 import { fetchJSON, renderProjects } from '../global.js';
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
@@ -86,3 +82,8 @@ searchInput.addEventListener('input', event => {
   updateProjectsTitle(filteredProjects.length);
   renderPieChart(filteredProjects);
 });
+
+// Project Management Module
+if (projectsTitle && Array.isArray(projects)) {
+  projectsTitle.textContent = `Projects (${projects.length})`;
+}
