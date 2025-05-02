@@ -13,23 +13,20 @@ if (projectsTitle && Array.isArray(projects)) {
 
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
+let selectedIndex = -1;
 
 let query = '';
 let searchInput = document.querySelector('.searchBar');
 searchInput.addEventListener('change', (event) => {
-  // update query value
   query = event.target.value;
-  // filter projects
   let filteredProjects = projects.filter((project) => {
     let values = Object.values(project).join('\n').toLowerCase();
     return values.includes(query.toLowerCase());
   });
-  // render filtered projects
   renderProjects(filteredProjects, projectsContainer, 'h2');
 });
 
 function renderPieChart(projectsGiven) {
-  // Step 1: Roll up the data
   const newRolledData = d3.rollups(
     projectsGiven,
     (v) => v.length,
@@ -41,20 +38,17 @@ function renderPieChart(projectsGiven) {
     label: year
   }));
 
-  // Step 2: Set up D3 pie layout and arc generator
   const newSliceGenerator = d3.pie().value(d => d.value);
   const newArcData = newSliceGenerator(newData);
   const arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
   const colors = d3.scaleOrdinal(d3.schemeTableau10);
 
-  // Step 3: Clean up old SVG paths and legend items
   const newSVG = d3.select('#projects-pie-plot');
-  newSVG.selectAll('*').remove(); // more complete cleanup than just paths
+  newSVG.selectAll('*').remove();
 
   const legend = d3.select('.legend');
   legend.selectAll('*').remove();
 
-  // Step 4: Draw new paths
   const group = newSVG.append('g');
 
   group.selectAll('path')
@@ -62,16 +56,39 @@ function renderPieChart(projectsGiven) {
     .enter()
     .append('path')
     .attr('d', arcGenerator)
-    .attr('fill', (d, i) => colors(i));
+    .attr('fill', (d, i) => colors(i))
+    .attr('class', (_, i) => selectedIndex === i ? 'selected' : '')
+    .style('cursor', 'pointer')
+    .on('click', function(_, i) {
+      selectedIndex = selectedIndex === i ? -1 : i;
 
-  // Step 5: Draw updated legend
+      // Update paths
+      newSVG.selectAll('path')
+        .attr('class', (_, idx) => selectedIndex === idx ? 'selected' : '');
+
+      // Update legend
+      legend.selectAll('li')
+        .attr('class', (_, idx) => selectedIndex === idx ? 'legend-item selected' : 'legend-item');
+    });
+
   legend.selectAll('li')
     .data(newData)
     .enter()
     .append('li')
-    .attr('class', 'legend-item')
+    .attr('class', (d, i) => selectedIndex === i ? 'legend-item selected' : 'legend-item')
     .attr('style', (d, i) => `--color:${colors(i)}`)
-    .html((d) => `<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`);
+    .html((d) => `<span class="swatch"></span> ${d.label} <em>(${d.value})</em>`)
+    .on('click', function(_, i) {
+      selectedIndex = selectedIndex === i ? -1 : i;
+
+      // Update paths
+      newSVG.selectAll('path')
+        .attr('class', (_, idx) => selectedIndex === idx ? 'selected' : '');
+
+      // Update legend
+      legend.selectAll('li')
+        .attr('class', (_, idx) => selectedIndex === idx ? 'legend-item selected' : 'legend-item');
+    });
 }
 
 renderPieChart(projects);
@@ -84,18 +101,4 @@ searchInput.addEventListener('input', (event) => {
   });
   renderProjects(filteredProjects, projectsContainer, 'h2');
   renderPieChart(filteredProjects);
-});
-
-let selectedIndex = -1;
-
-let svg = d3.select('svg');
-svg.selectAll('path').remove();
-arcs.forEach((arc, i) => {
-  svg
-    .append('path')
-    .attr('d', arc)
-    .attr('fill', colors(i))
-    .on('click', () => {
-      // What should we do? (Keep scrolling to find out!)
-    });
 });

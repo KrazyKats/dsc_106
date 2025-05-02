@@ -303,3 +303,7 @@ hr {
 .selected:is(path) {
   fill: var(--color); /* Apply the selected color */
 }
+
+path {
+  cursor: pointer;
+}
