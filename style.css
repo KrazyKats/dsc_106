@@ -308,3 +308,18 @@ path {
   fill: var(--color);
   cursor: pointer;
 }
+
+.gridlines line {
+  stroke: #ccc;
+  stroke-opacity: 0.4;
+  shape-rendering: crispEdges;
+}
+
+.gridlines path {
+  display: none;
+}
+
+.dots circle {
+  transition: fill 0.2s;
+}
+
