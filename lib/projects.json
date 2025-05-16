@@ -6,9 +6,9 @@
         "description": "Hardware emits EMF that canbe read to attept to decipher red data lines or find black and reddata pairs in a breach of security."
     },
     {
-        "title": "Deleniti a esse consequatur!",
-        "image": "https://vis-society.github.io/labs/2/images/empty.svg",
-        "description": "Magnam culpa maxime quod, dolorum esse suscipit alias reiciendis aperiam odio nam. Iste quasi velit nihil atque facilis officia animi tempore dolor voluptatum suscipit! Minima, est. Ex fugit libero sed.",
+        "title": "Bike Stuff",
+        "image": "../images/Proj2.png",
+        "description": "Made a bake route map and a bike repair guide.",
         "year": "2024"
     },
     {
