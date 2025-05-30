@@ -126,10 +126,10 @@ circle.selected {
 }
 
 .loc {
+  background: var(--color);
   display: flex;
   width: 0.5em;
   aspect-ratio: 1;
-  background: steelblue;
   border-radius: 50%;
 }
 #file-lines {
