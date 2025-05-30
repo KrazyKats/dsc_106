@@ -245,7 +245,7 @@ hr {
 }
 
 #projects-pie-plot path {
-  transition: 300ms;
+  transition: 500ms;
 }
 
 #projects-pie-plot:hover:has(path:hover) path:not(:hover) {

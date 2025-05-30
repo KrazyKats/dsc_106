@@ -12,6 +12,7 @@ circle {
 
 circle:hover {
   transform: scale(1.5);
+  transition: 200ms;
 }
 .tooltip {
   position: fixed;
@@ -23,6 +24,7 @@ circle:hover {
   border-color: black;
   padding: 1em;
   border-style: solid;
+  transition: 200ms;
 }
 
 dl.stats {
@@ -32,6 +34,7 @@ dl.stats {
 
   padding: 1em;
   align-items: baseline;
+  transition: 200ms;
 }
 
 #stats > dl.stats {
@@ -39,10 +42,12 @@ dl.stats {
   border-width: 1px;
   border-color: black;
   border-radius: 20%;
+  transition: 200ms;
 }
 
 .stats > dt {
   grid-row: 1;
+  transition: 200ms;
 }
 
 .stats > dd {
@@ -50,6 +55,7 @@ dl.stats {
   font-weight: bold;
   margin: 0; /* Remove default margin */
   display: grid;
+  transition: 200ms;
 }
 
 dl.info {
@@ -81,6 +87,7 @@ dl.info[hidden]:not(:hover, :focus-within) {
 }
 circle.selected {
   fill: #ff6b6b;
+  transition: 200ms;
 }
 #filter {
   display: flex;
