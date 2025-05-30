@@ -7,12 +7,14 @@ dl.info {
   margin: 0;
   font-family: sans-serif;
   font-size: 0.9em;
+  transition-duration: 500ms;
   transition: opacity 500ms, visibility 500ms;
   pointer-events: none;
 }
 
 dl.tooltip {
-  position: absolute; /* Change from 'fixed' to 'absolute' */
+  position: absolute;
+  /* Change from 'fixed' to 'absolute' */
   top: 0;
   left: 0;
   background: rgba(255, 255, 255, 0.9);
@@ -21,7 +23,8 @@ dl.tooltip {
   padding: 1em;
   backdrop-filter: blur(4px);
   z-index: 10;
-  pointer-events: none; /* Ensure tooltip doesn’t block interactions */
+  pointer-events: none;
+  /* Ensure tooltip doesn’t block interactions */
 }
 
 
@@ -31,7 +34,10 @@ dl.info[hidden]:not(:hover, :focus-within) {
 }
 
 circle {
-  transition: 200ms;
+  @starting-style {
+    r: 0;
+  }
+  transition: 500ms;
   transform-origin: center;
   transform-box: fill-box;
 }
@@ -46,7 +52,8 @@ circle.selected {
 
 @keyframes marching-ants {
   to {
-    stroke-dashoffset: -8; /* 5 + 3 */
+    stroke-dashoffset: -8;
+    /* 5 + 3 */
   }
 }
 
@@ -75,7 +82,8 @@ circle.selected {
   grid-row: 1;
   font-weight: bold;
   color: #333;
-  align-self: center; /* Vertically center the language name */
+  align-self: center;
+  /* Vertically center the language name */
 }
 
 #language-breakdown dd {
@@ -83,8 +91,10 @@ circle.selected {
   margin: 0;
   color: #555;
   display: flex;
-  flex-direction: column; /* Stack percentage above the number of lines */
-  align-items: flex-start; /* Align content to the left */
+  flex-direction: column;
+  /* Stack percentage above the number of lines */
+  align-items: flex-start;
+  /* Align content to the left */
 }
 
 #language-breakdown dd span {

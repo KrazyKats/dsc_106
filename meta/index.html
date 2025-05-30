@@ -1,13 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>M̶̧̧̢̜̝̘̬̝̫̠̗̩͉̰͊̓͌́͜ͅĘ̵̪̦̙͕̙̪̝̜̳͖̟̙͍͇̗͔̘̓̕T̴̢͍͓̘͚̥͗̅͆̑̇̂͂̈̊Ǎ̷̺̭̪͙̝̼̤̙̪͔͙͒̊̽̇̑̎̇́̏͒̂͆͐͆̕͜͝ͅ ̶̨̢̛̪̹̭͉͎͉͚̝̰͉̲͚̻̹̖̣͔̲̎̒̐͑̽͋̃͊ͅM̵̨̡̳͚͖̩͍̖̆̈́̄͊̅̽̏̏I̷͎͌͑̾̍̈̎͊̆̈́̽͑́͊̀̒̋̓̏͘͠͝Ś̴̨̢̨̫̯̯̭̺͕̱̠̞̤̝̮̣̻̳͎̗̈̀͂̑̓̔̋̊͗̀̆̃͗͘͝ ̴̠̤͎͓̰̙̪̳͇̿̈́̓̅͆̈́̇̈́͑͒͑͊́͌̆͆̎͊̈́̈́́̕̕̚͠H̶̡̧̨̡͚͕̳͖̺̱̘̹̦͈̙̞̼̳̗̎͐̾͋̃̉̈́̕͠͠ͅU̶̧͍̟̳͍̬̣̟̳̻̹͇͚͌̓͒̽̏̅͑̇̽́̓̔͆̉̒̏̆̐Ȩ̶̨̨̗̮͈̪͎̙̖̞̤̗̃̔̀̋̈́̽̽̃̀͌̉͗͝V̴̢̤̠̪̪̟̟̻̈́̀̽̓̅̉̈́̕Ở̸͚͑̆͐̆̈́͂̈̐̄̐̅̑̓͊͌̚̕̕͠͝Ś̴̨̡̨̗̟̣̙͇͙̞͓̩͚̜͎͕̞͕̰͎̫̱̀̆͒̂̏̒̐̒̈́̀̓̈́͌̈́̀̆̾̀͝ ̴̧̛̰̦͉̖̳̭͈̬̘̥̼̓̿̓͂̀͂̒͑̄̂͑̽͌͘͜͜͝Ȩ̴̨̧̗͔͚̗̩̤̺͚͔̠̺̝̱̮̱͈̙̰̜̀̆͛̇̍͐̈́̌̈́̋̅͒͊͋̓͊̂̓̒͘̕̚N̴͕̲̭͛ ̵̢̢̨̲̺͖̼̜̙͍̥̠͙̳̬̹̜̩̖͓̝͉̥̭̝͌̒̑̄̇́̐́̾̑T̴̘͕̭̪̝͇̩͎̹̩̠̥̖̯̗̖̭̘̱̭͗͆̎͋̍̓̇͗̋̊̒̂́̓̓͆̀͘̚͜͝͝ͅǓ̶̫̪͖̟̪͖̖̖͎̑̀̆̉͂̔͐́́̐͒̉̅̈́͠͝ͅ ̴̨̳̣̲̝̣̖̦͓̺͙̯̺̪͉̟͕̰̪͈̤̳̥̝͎̉͋̓̇B̶̢̯̽̂̎̐͗̍͒͌͛̽̉̓̈́̌͑͂͑̒̃͗̕͘Ȯ̸͙͔̼͔̳̦̱̟̉̽̂̋̓̇̋̍̆͒̊͒̍̍͌̄͜͝C̴͕͍̻̞͈̭͚͎̲͉̭̗͖̘͚͙̩̅͑͊̎̿͐̉͑̾̿̈́̋͛̄͛̍̓̀̾̕͜͠͠ͅͅͅA̴̡̛͈͓̦͍̺̬͍̲͉͈͉̰͍̪̺͓̲͖͇̽̒́̇͗̌̈́̈́̆̆̉̄͐̿̿́̃̽̀͆͂͌̚͜͝</title>
+  <title>Meta
+  </title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-    <h1>META Data</h1>
+  <h1>META Data</h1>
+
+  <div style="display: flex; align-items: baseline; margin-bottom: 1em;">
+    <label for="commit-progress" style="flex: 1;">
+      Show commits until:
+      <input type="range" id="commit-progress" min="0" max="100" value="100" />
+    </label>
+    <time id="commit-time" style="margin-left: auto;"></time>
+  </div>
+
 
   <div id="stats"></div>
 
@@ -39,4 +51,5 @@
   <script type="module" src="main.js"></script>
   <script src="../global.js" type="module"></script>
 </body>
+
 </html>
