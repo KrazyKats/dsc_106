@@ -1,43 +1,11 @@
-@import url('../style.css');
-
-dl.info {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.25em 1em;
-  margin: 0;
-  font-family: sans-serif;
-  font-size: 0.9em;
-  transition-duration: 500ms;
-  transition: opacity 500ms, visibility 500ms;
-  pointer-events: none;
+.gridlines {
+  opacity: 0.1;
 }
-
-dl.tooltip {
-  position: absolute;
-  /* Change from 'fixed' to 'absolute' */
-  top: 0;
-  left: 0;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
-  border-radius: 5px;
-  padding: 1em;
-  backdrop-filter: blur(4px);
-  z-index: 10;
-  pointer-events: none;
-  /* Ensure tooltip doesn’t block interactions */
-}
-
-
-dl.info[hidden]:not(:hover, :focus-within) {
-  opacity: 0;
-  visibility: hidden;
-}
-
 circle {
   @starting-style {
     r: 0;
   }
-  transition: 500ms;
+  transition: 200ms;
   transform-origin: center;
   transform-box: fill-box;
 }
@@ -45,68 +13,132 @@ circle {
 circle:hover {
   transform: scale(1.5);
 }
+.tooltip {
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 20%;
+  border-width: 1px;
+  border-color: black;
+  padding: 1em;
+  border-style: solid;
+}
 
+dl.stats {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 0.5rem 1rem;
+
+  padding: 1em;
+  align-items: baseline;
+}
+
+#stats > dl.stats {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 20%;
+}
+
+.stats > dt {
+  grid-row: 1;
+}
+
+.stats > dd {
+  grid-row: 2;
+  font-weight: bold;
+  margin: 0; /* Remove default margin */
+  display: grid;
+}
+
+dl.info {
+  /* ... other styles ... */
+  transition-duration: 500ms;
+  transition-property: opacity, visibility;
+}
+
+dl.info[hidden]:not(:hover, :focus-within) {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#commit-tooltip {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1rem;
+  align-items: baseline;
+}
+#commit-tooltip > dt {
+  grid-column: 1;
+}
+
+#commit-tooltip > dd {
+  grid-column: 2;
+  font-weight: bold;
+  margin: 0; /* Remove default margin */
+  display: grid;
+}
 circle.selected {
   fill: #ff6b6b;
 }
-
-@keyframes marching-ants {
-  to {
-    stroke-dashoffset: -8;
-    /* 5 + 3 */
-  }
-}
-
-.selection {
-  fill-opacity: 0.1;
-  stroke: black;
-  stroke-opacity: 0.7;
-  stroke-dasharray: 5 3;
-  animation: marching-ants 2s linear infinite;
-}
-
-#language-breakdown {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.5em 1em;
-  margin: 1em 0;
-  font-family: sans-serif;
-  font-size: 0.9em;
-  background: #f9f9f9;
-  padding: 1em;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#language-breakdown dt {
-  grid-row: 1;
-  font-weight: bold;
-  color: #333;
-  align-self: center;
-  /* Vertically center the language name */
-}
-
-#language-breakdown dd {
-  grid-row: 2;
-  margin: 0;
-  color: #555;
+#filter {
   display: flex;
-  flex-direction: column;
-  /* Stack percentage above the number of lines */
-  align-items: flex-start;
-  /* Align content to the left */
+  width: 100%;
+}
+#filter > label {
+  width: 100%;
+  border-radius: 20%;
+  flex: 1;
+}
+#commit-time-slider {
+  width: 84.5%;
 }
 
-#language-breakdown dd span {
+#selected-time {
+  width: 100%;
   display: block;
+  text-align: right;
+  padding-right: 100em;
+}
+.files {
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+.files > div {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+}
+.files dt {
+  grid-column: 1;
 }
 
-#language-breakdown dd .percentage {
-  font-size: 0.8em;
-  color: #888;
+.files dd {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  align-content: start;
+  gap: 0.15em;
+  padding-top: 0.6em;
+  margin-left: 0;
 }
 
-#language-breakdown dd .lines {
-  font-size: 1em;
-  font-weight: bold;
+.loc {
+  display: flex;
+  width: 0.5em;
+  aspect-ratio: 1;
+  background: steelblue;
+  border-radius: 50%;
+}
+#file-lines {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  align-content: start;
+  gap: 0.15em;
+  padding-top: 0.6em;
+  margin-left: 0;
 }
